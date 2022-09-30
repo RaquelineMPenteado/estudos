@@ -2,18 +2,19 @@ class ContaBancaria
     def initialize(saldo)
         @saldo=saldo
     end
-    def transfere(conta, valor)
+    def transferir(conta, valor)
         if @saldo >= valor
             conta.creditar(valor)
-            self.debitar(valor)
+            debitar(valor)
        else
             raise "Saldo insuficiente!"        
        end  
     end       
     private def debitar(valor)
-        @saldo = @saldo - valor             
+        @saldo = @saldo - valor  
+        puts "saldo #{saldo}"           
     end    
-    def creditar(valor)
+    protected def creditar(valor)
         @saldo = @saldo + valor
     end
     def saldo
